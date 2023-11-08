@@ -1,0 +1,16 @@
+server:
+  port: 8095
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      default-zone: http://localhost:8761
+spring:
+  application:
+    name: AuthServer
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: CinemaDiscoveryUser

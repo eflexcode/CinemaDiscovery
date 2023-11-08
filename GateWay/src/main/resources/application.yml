@@ -1,0 +1,23 @@
+server:
+  port: 8097
+spring:
+  config:
+    import: optional:configserver:http//localhost:8091
+  application:
+    name: GatewaySever
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: AuthServer
+          uri: http://localhost:8095
+          predicates:
+            - Path=/user/
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      default-zone: http://localhost:8761
