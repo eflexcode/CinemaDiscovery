@@ -21,6 +21,7 @@ public class User {
     private String imageUrl;
     private String bio;
     private Boolean online;
+    private Address address;
 
     private Date createdAt;
     private Date updateAt;

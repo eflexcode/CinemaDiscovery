@@ -12,15 +12,15 @@ import java.util.Date;
 public class Cinema {
 
     @Id
-    private String id;
+    private String organisationId;
     private String organisationName;
-    private String address;
+    private String fullAddress;
     private String email;
     @JsonIgnore
     private String password;
     private String imageUrl;
     private String organisationDescription;
-
+    private Address address;
     private Date openAt;
     private Date closeAt;
 
