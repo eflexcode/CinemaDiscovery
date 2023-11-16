@@ -1,5 +1,6 @@
 package com.larrex.AuthService.controller;
 
+import com.larrex.AuthService.entity.Address;
 import com.larrex.AuthService.entity.User;
 import com.larrex.AuthService.model.UserModel;
 import com.larrex.AuthService.service.UserService;
@@ -15,12 +16,39 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody UserModel userModel, HttpServletRequest httpServletRequest){
+    public User createUser(@RequestBody UserModel userModel) {
+        return userService.createUser(userModel);
+    }
 
-        return userService.createUser(userModel,httpServletRequest);
+    @PutMapping("/location/{user_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User updateLocation(@PathVariable("user_id") String userId, @RequestBody Address address) {
+        return userService.updateLocation(userId, address);
+    }
 
+    @PutMapping("/{user_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User updateUser(@PathVariable("user_id") String userId, @RequestBody UserModel userModel) {
+        return userService.updateUser(userModel, userId);
+    }
+
+    @GetMapping("/{user_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUser(@PathVariable(name = "user_id") String userId) {
+        System.out.println("ssssssssssssss"+userId);
+        return userService.getUserById(userId);
+    }
+    @GetMapping("get")
+    public String  getString() {
+        return "user_id";
+    }
+
+    @DeleteMapping("/{user_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteUser(@PathVariable("user_id") String userId){
+        userService.deleteUser(userId);
     }
 
 }

@@ -11,10 +11,10 @@ spring:
         locator:
           enabled: false
       routes:
-        - id: AuthServer
+        - id: AUTHSERVER
           uri: http://localhost:8095
           predicates:
-            - Path=/user/
+            - Path=/user/**
 eureka:
   instance:
     hostname: localhost
