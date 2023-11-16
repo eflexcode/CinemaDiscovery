@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
     public User updateLocation(String userId,Address address) {
 
         User user = getUserById(userId);
+        user.setUpdateAt(new Date());
         user.setAddress(address);
 
         return userRepository.save(user);
@@ -73,8 +74,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(String userId) {
-        System.out.println("mmmmmmmmmmmmmmmmmm"+userId);
-
         return userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not user found"));
     }
 

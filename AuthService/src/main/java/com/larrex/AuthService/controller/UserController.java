@@ -37,7 +37,6 @@ public class UserController {
     @GetMapping("/{user_id}")
     @ResponseStatus(HttpStatus.OK)
     public User getUser(@PathVariable(name = "user_id") String userId) {
-        System.out.println("ssssssssssssss"+userId);
         return userService.getUserById(userId);
     }
     @GetMapping("get")

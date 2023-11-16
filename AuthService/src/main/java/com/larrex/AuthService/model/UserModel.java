@@ -8,7 +8,6 @@ public class UserModel {
 
     private String displayName;
     private String email;
-    private String password;
     private String imageUrl;
     private String bio;
     private Boolean online;

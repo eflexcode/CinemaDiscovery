@@ -9,7 +9,7 @@ import java.util.Date;
 public class CinemaModel {
 
     private String organisationName;
-    private String address;
+    private String fullAddress;
     private String email;
     private String password;
     private String imageUrl;
