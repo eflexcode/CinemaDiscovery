@@ -21,8 +21,8 @@ public class Cinema {
     private String imageUrl;
     private String organisationDescription;
     private Address address;
-    private Date openAt;
-    private Date closeAt;
+    private String openAt;
+    private String closeAt;
 
     private Date createdAt;
     private Date updateAt;

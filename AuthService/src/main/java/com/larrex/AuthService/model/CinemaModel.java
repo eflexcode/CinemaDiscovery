@@ -11,12 +11,11 @@ public class CinemaModel {
     private String organisationName;
     private String fullAddress;
     private String email;
-    private String password;
     private String imageUrl;
     private String organisationDescription;
 
-    private Date openAt;
-    private Date closeAt;
+    private String openAt;
+    private String closeAt;
 
     private Date createdAt;
     private Date updateAt;
