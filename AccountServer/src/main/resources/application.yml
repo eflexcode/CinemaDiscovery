@@ -1,7 +1,7 @@
 server:
-  port: 8096
+  port: 8095
   servlet:
-    context-path: /auth/
+    context-path: /account/
 eureka:
   instance:
     hostname: localhost
@@ -10,10 +10,11 @@ eureka:
       default-zone: http://localhost:8761
 spring:
   application:
-    name: AUTHSERVER
+    name: ACCOUNTSERVER
 
   data:
     mongodb:
       host: localhost
       port: 27017
       database: CinemaDiscoveryUser
+

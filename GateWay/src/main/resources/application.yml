@@ -14,7 +14,7 @@ spring:
         - id: AUTHSERVER
           uri: http://localhost:8095
           predicates:
-            - Path=/auth/**
+            - Path=/account/**
 eureka:
   instance:
     hostname: localhost
