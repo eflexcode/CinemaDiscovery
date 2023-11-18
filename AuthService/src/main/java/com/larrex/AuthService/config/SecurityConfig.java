@@ -19,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private String[] publicUrls = {"v1/register", "v1/login", "v1/verify_email_token", "v1/verify_email_toke_expired"};
+    private final String[] publicUrls = {"v1/register", "v1/login", "v1/verify_email_token", "v1/verify_email_toke_expired"};
 
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -9,31 +9,31 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("user/")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping()
+    @PostMapping("create_account")
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody UserModel userModel) {
         return userService.createUser(userModel);
     }
 
-    @PutMapping("/location/{user_id}")
+    @PutMapping("location/{user_id}")
     @ResponseStatus(HttpStatus.OK)
     public User updateLocation(@PathVariable("user_id") String userId, @RequestBody Address address) {
         return userService.updateLocation(userId, address);
     }
 
-    @PutMapping("/{user_id}")
+    @PutMapping("{user_id}")
     @ResponseStatus(HttpStatus.OK)
     public User updateUser(@PathVariable("user_id") String userId, @RequestBody UserModel userModel) {
         return userService.updateUser(userModel, userId);
     }
 
-    @GetMapping("/{user_id}")
+    @GetMapping("{user_id}")
     @ResponseStatus(HttpStatus.OK)
     public User getUser(@PathVariable(name = "user_id") String userId) {
         return userService.getUserById(userId);
@@ -43,7 +43,7 @@ public class UserController {
         return "user_id";
     }
 
-    @DeleteMapping("/{user_id}")
+    @DeleteMapping("{user_id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteUser(@PathVariable("user_id") String userId){
         userService.deleteUser(userId);
