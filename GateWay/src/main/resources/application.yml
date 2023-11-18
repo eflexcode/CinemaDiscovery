@@ -12,6 +12,10 @@ spring:
           enabled: false
       routes:
         - id: AUTHSERVER
+          uri: http://localhost:8096
+          predicates:
+            - Path=/auth/**
+        - id: ACCOUNTSERVER
           uri: http://localhost:8095
           predicates:
             - Path=/account/**
