@@ -38,6 +38,12 @@ public class UserController {
     public User getUser(@PathVariable(name = "user_id") String userId) {
         return userService.getUserById(userId);
     }
+
+    @GetMapping("with_email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserWithEmail(@PathVariable(name = "email") String email) {
+        return userService.getUserByEmail(email);
+    }
     @GetMapping("get")
     public String  getString() {
         return "user_id";

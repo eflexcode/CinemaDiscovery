@@ -14,6 +14,7 @@ public interface UserService {
 //   User createUser(UserModel userModel, HttpServletRequest httpServletRequest);
    User updateUser(UserModel userModel,String userId);
    User getUserById(String userId);
+   User getUserByEmail(String email);
    void deleteUser(String userId);
 
 }

@@ -7,4 +7,6 @@ public interface AuthService {
 
     User registerAccount(UserModel userModel);
 
+    void sendVerificationEmail(String email);
+
 }
