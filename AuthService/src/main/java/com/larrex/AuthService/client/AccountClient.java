@@ -19,6 +19,8 @@ public interface AccountClient {
     @ResponseStatus(HttpStatus.CREATED)
     ResponseEntity<User> getUserEmail(@PathVariable(name = "email") String email);
 
-
+    @PostMapping("user/verify/{email}")
+    @ResponseStatus(HttpStatus.CREATED)
+    ResponseEntity<User> verifyUser(@PathVariable(name = "email") String email);
 
 }

@@ -22,8 +22,8 @@ public class User {
     private String bio;
     private Boolean online;
     private Address address;
+    private Boolean isVerified = false;
 
     private Date createdAt;
     private Date updateAt;
-
 }

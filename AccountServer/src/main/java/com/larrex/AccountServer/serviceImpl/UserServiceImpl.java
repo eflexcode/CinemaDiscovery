@@ -58,6 +58,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User verifyUser(String email) {
+        System.out.println("LLLLLLLLLLLLLLLLLLLL"+email);
+        User user= getUserByEmail(email);
+        user.setIsVerified(true);
+
+        return userRepository.save(user);
+    }
+
+
+    @Override
     public User getUserById(String userId) {
         return userRepository.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not user found"));
     }

@@ -55,4 +55,10 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
+    @PostMapping("verify/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public User verifyUser(@PathVariable("email")String email){
+       return userService.verifyUser(email);
+    }
+
 }

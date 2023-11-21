@@ -1,6 +1,7 @@
 package com.larrex.AuthService.controller;
 
 import com.larrex.AuthService.entity.User;
+import com.larrex.AuthService.model.JwtToken;
 import com.larrex.AuthService.model.UserModel;
 import com.larrex.AuthService.sevice.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -26,16 +27,16 @@ public class AuthController {
         return "login test";
     }
 
-    @PostMapping("verify_email_token")
+    @PostMapping("verify")
     @ResponseStatus(HttpStatus.OK)
-    public String verifyEmail(){
-        return "verify test";
+    public String verifyEmail(@RequestParam(name = "token") String token){
+        return authService.verifyToken(token);
     }
 
-    @PostMapping("verify_email_toke_expired")
+    @PostMapping("expired_token")
     @ResponseStatus(HttpStatus.OK)
-    public String createVerifyEmail(){
-        return "verify test";
+    public String createVerifyEmail(@RequestParam(name = "token")String token){
+        return authService.verifyTokenExpired(token);
     }
 
 }
