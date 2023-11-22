@@ -33,21 +33,20 @@ public class SecurityConfig {
     }
 
 
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-@Bean
-public AuthenticationProvider authenticationProvider(){
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
 
-    DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-    daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-    daoAuthenticationProvider.setUserDetailsService(authService.userDetailsService());
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(authService.userDetailsService());
 
-    return daoAuthenticationProvider;
-}
+        return daoAuthenticationProvider;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -63,6 +62,5 @@ public AuthenticationProvider authenticationProvider(){
 
         return httpSecurity.build();
     }
-
 
 }

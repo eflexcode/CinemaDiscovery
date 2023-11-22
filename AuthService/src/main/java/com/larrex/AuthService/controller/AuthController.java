@@ -32,12 +32,12 @@ public class AuthController {
     @ResponseStatus(HttpStatus.OK)
     public JwtToken login(@RequestBody LoginModel loginModel){
 
-        Authentication authentication =
-                authenticationManager.
-                        authenticate(new UsernamePasswordAuthenticationToken(loginModel.getEmail(),loginModel.getPassword()));
-//
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-//
+//        Authentication authentication =
+//                authenticationManager.
+//                        authenticate(new UsernamePasswordAuthenticationToken(loginModel.getEmail(),loginModel.getPassword()));
+////
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+////
 
         final UserDetails userDetails = authService.userDetailsService().loadUserByUsername(loginModel.getEmail());
         return authService.login(userDetails);
