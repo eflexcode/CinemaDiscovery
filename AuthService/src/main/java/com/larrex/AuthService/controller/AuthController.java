@@ -2,10 +2,16 @@ package com.larrex.AuthService.controller;
 
 import com.larrex.AuthService.entity.User;
 import com.larrex.AuthService.model.JwtToken;
+import com.larrex.AuthService.model.LoginModel;
 import com.larrex.AuthService.model.UserModel;
 import com.larrex.AuthService.sevice.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final AuthenticationManager authenticationManager;
 
     @PostMapping("register")
     @ResponseStatus(HttpStatus.CREATED)
@@ -23,8 +30,18 @@ public class AuthController {
 
     @PostMapping("login")
     @ResponseStatus(HttpStatus.OK)
-    public String login(){
-        return "login test";
+    public JwtToken login(@RequestBody LoginModel loginModel){
+
+        Authentication authentication =
+                authenticationManager.
+                        authenticate(new UsernamePasswordAuthenticationToken(loginModel.getEmail(),loginModel.getPassword()));
+//
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+//
+
+        final UserDetails userDetails = authService.userDetailsService().loadUserByUsername(loginModel.getEmail());
+        return authService.login(userDetails);
+//        return new JwtToken("ssssssssssssssssssssssssssssssssssssssssssssssss");
     }
 
     @PostMapping("verify")
@@ -37,6 +54,12 @@ public class AuthController {
     @ResponseStatus(HttpStatus.OK)
     public String createVerifyEmail(@RequestParam(name = "token")String token){
         return authService.verifyTokenExpired(token);
+    }
+
+    @GetMapping("get_user")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUser(){
+        return authService.getUser();
     }
 
 }
