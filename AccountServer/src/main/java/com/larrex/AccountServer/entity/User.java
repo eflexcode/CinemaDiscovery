@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Document
 @Data
-public class User {
+public class User{
 
     @Id
     private String id;
@@ -23,6 +23,7 @@ public class User {
     private Boolean online;
     private Address address;
     private Boolean isVerified = false;
+    private Role role  = Role.USER;
 
     private Date createdAt;
     private Date updateAt;

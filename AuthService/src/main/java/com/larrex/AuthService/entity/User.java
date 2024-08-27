@@ -5,10 +5,12 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Document
 @Data
@@ -25,13 +27,14 @@ public class User implements UserDetails {
     private Boolean online;
     private Address address;
     private Boolean isVerified = false;
+    private Role role = Role.USER;
 
     private Date createdAt;
     private Date updateAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
@@ -56,6 +59,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isVerified;
+        return true;
     }
 }

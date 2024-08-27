@@ -51,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
             eventPublisher.publishEvent(new VerificationEvent(this, userModel.getEmail()));
         }
 
-        return accountClient.createUser(userModel).getBody();
+        return userRequestEntity.getBody();
     }
 
     @Override
